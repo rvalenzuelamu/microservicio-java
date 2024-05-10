@@ -71,7 +71,7 @@
 		                            <limit>
 		                                <counter>LINE</counter>
 		                                <value>COVEREDRATIO</value>
-		                                <minimum>0.85</minimum> <!-- Cobertura mínima requerida (85%) -->
+		                                <minimum>0.95</minimum> <!-- Cobertura mínima requerida (85%) -->
 		                            </limit>
 		                        </limits>
 		                    </rule>
