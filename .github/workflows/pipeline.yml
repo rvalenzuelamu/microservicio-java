@@ -43,11 +43,11 @@ jobs:
           
       - name: Analisis SonarCloud
         run: |
-          mvn test org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
+          mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
           -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.organization=rvalenzuelamu \
-          -Dsonar.projectKey=rvalenzuelamu_microservicio-java
+          -Dsonar.projectKey=rvalenzuelamu_microservicio-java2
 
       - name: SonarQube Quality Gate check
         env:
