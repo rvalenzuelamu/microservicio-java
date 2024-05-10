@@ -33,7 +33,7 @@ jobs:
 
       - name: Ejecucion Test Unitarios
         run: |
-          mvn test verify
+          mvn test 
      
       - name: Setup Java JDK 17
         uses: actions/setup-java@v4.2.1
@@ -43,12 +43,11 @@ jobs:
           
       - name: Analisis SonarCloud
         run: |
-          mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
+          mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
           -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.organization=rvalenzuelamu \
           -Dsonar.projectKey=rvalenzuelamu_microservicio-java
-          -Dsonar.coverage.jacoco.xmlReportPaths=../testing-web-complete/target/site/jacoco/jacoco.xml
 
       - name: SonarQube Quality Gate check
         env:
