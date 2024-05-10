@@ -49,8 +49,9 @@ jobs:
           -Dsonar.organization=rvalenzuelamu \
           -Dsonar.projectKey=rvalenzuelamu_microservicio-java
 
-      - name: SonarQube Quality Gate Check
-         env:
-        uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
+      - name: SonarQube Quality Gate check
+        env:
+         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        uses: sonarsource/sonarqube-quality-gate-action@master
         with:
           scanMetadataReportFile: target/sonar/report-task.txt
