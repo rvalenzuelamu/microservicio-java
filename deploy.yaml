@@ -17,3 +17,14 @@ spec:
         image: 987219263/microservicio-java:latest
         ports:
         - containerPort: 8080
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservicio-java
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: microservicio-java
