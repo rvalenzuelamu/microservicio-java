@@ -16,7 +16,6 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<jacoco.version>0.8.7</jacoco.version>
 	</properties>
 
 	<dependencies>
@@ -33,36 +32,40 @@
 	</dependencies>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+				    <artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.8</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		        <plugin>
-		                <groupId>org.jacoco</groupId>
-		                <artifactId>jacoco-maven-plugin</artifactId>
-		                <version>${jacoco.version}</version>
-		                <executions>
-		                    <execution>
-		                        <id>jacoco-initialize</id>
-		                        <goals>
-		                            <goal>prepare-agent</goal>
-		                        </goals>
-		                        <configuration>
-		                            <!-- Configura la cobertura mínima -->
-		                            <propertyName>jacoco.minimumCoverage</propertyName>
-		                            <value>85%</value>
-		                        </configuration>
-		                    </execution>
-		                    <execution>
-		                        <id>jacoco-report</id>
-		                        <phase>test</phase>
-		                        <goals>
-		                            <goal>report</goal>
-		                        </goals>
-		                    </execution>
-		                </executions>
-		        </plugin>
+			
+			<plugin>
+			    <groupId>org.jacoco</groupId>
+			    <artifactId>jacoco-maven-plugin</artifactId>
+			    <executions>
+			        <execution>
+			            <goals>
+			                <goal>prepare-agent</goal>
+			            </goals>
+			        </execution>
+			        <execution>
+			            <id>report</id>
+			            <phase>test</phase>
+			            <goals>
+			                <goal>report</goal>
+			            </goals>
+			        </execution>
+				
+			    </executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
