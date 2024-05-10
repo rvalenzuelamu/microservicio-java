@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 public class GreetingService {
 	public String greet() {
 		//String password = "12345";
-		return "Hola, Soy Robert Valenzuela";
+		return "Hello, World";
 	}
 }
