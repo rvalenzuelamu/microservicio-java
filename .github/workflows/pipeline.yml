@@ -27,7 +27,7 @@ jobs:
           java-version: '8'
           distribution: 'temurin'
       
-      - name: Compilacion Maven
+      - name: Compilacion maven
         run: |
           mvn clean package
 
