@@ -16,7 +16,7 @@ spec:
       - name: microservicio-java
         image: 987219263/microservicio-java:latest
         ports:
-        - containerPort: 8081
+        - containerPort: 8080
         
 ---
 
@@ -27,6 +27,6 @@ metadata:
 spec:
   ports:
   - port: 8080
-    targetPort: 8081
+    targetPort: 8080
   selector:
     app: microservicio-java 
