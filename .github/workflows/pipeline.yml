@@ -1,0 +1,51 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Java CI with Maven
+
+on:
+  push:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Clonacion de codigo
+        uses: actions/checkout@v4
+     
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.2.1
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+      
+      - name: Compilacion MVN
+        run: |
+          mvn package
+
+      - name: Ejecucion Test Unitarios
+        run: |
+          mvn package test
+     
+      - name: Setup Java JDK 17
+        uses: actions/setup-java@v4.2.1
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          
+      - name: Analisis SonarCloud
+        run: |
+          mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
+          -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.organization=rvalenzuelamu \ 
+          -Dsonar.projectKey=rvalenzuelamu_microservicio-java
+
