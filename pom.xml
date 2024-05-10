@@ -28,6 +28,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		<dependency>
+		    <groupId>org.jacoco</groupId>
+		    <artifactId>jacoco-maven-plugin</artifactId>
+		    <version>0.8.12</version> 
+		    <scope>test</scope>
+		</dependency>
+
 		</dependency>
 	</dependencies>
 
@@ -37,7 +44,41 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+		        <plugin>
+		            <groupId>org.jacoco</groupId>
+		            <artifactId>jacoco-maven-plugin</artifactId>
+		            <version>0.8.12</version> <!-- Versión deseada de JaCoCo -->
+		            <executions>
+		                <execution>
+		                    <id>jacoco-initialize</id>
+		                    <goals>
+		                        <goal>prepare-agent</goal>
+		                    </goals>
+		                </execution>
+		                <execution>
+		                    <id>jacoco-site</id>
+		                    <phase>verify</phase>
+		                    <goals>
+		                        <goal>report</goal>
+		                    </goals>
+		                </execution>
+		            </executions>
+		            <configuration>
+		                <rules>
+		                    <rule>
+		                        <element>PACKAGE</element>
+		                        <limits>
+		                            <limit>
+		                                <counter>LINE</counter>
+		                                <value>COVEREDRATIO</value>
+		                                <minimum>0.85</minimum> <!-- Cobertura mínima requerida (85%) -->
+		                            </limit>
+		                        </limits>
+		                    </rule>
+		                </rules>
+		            </configuration>
+		        </plugin>
 		</plugins>
 	</build>
-
 </project>
