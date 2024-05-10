@@ -16,12 +16,6 @@ public class GreetingController {
 
 	@RequestMapping("/greeting")
 	public @ResponseBody String greeting() {
-	    try {
-		// Intencionalmente lanzando una excepción no controlada
-            	throw new RuntimeException("Uncontrolled exception for testing purposes");
-            } catch (Exception e) {
-            	// No se hace nada aquí, el código no captura la excepción
-            }    
 		return service.greet();
 	}
 
